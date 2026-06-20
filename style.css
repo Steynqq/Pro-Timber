@@ -1,4 +1,4 @@
-/* ============================================================
+ ============================================================
    Pro Timber — Dark theme matching the logo
    Dark background, yellow (#f5c518) accents, white text
    ============================================================ */
@@ -16,7 +16,7 @@ body {
 
   background-image:
     linear-gradient(rgba(15, 15, 15, 0.88), rgba(15, 15, 15, 0.88)),
-    url('images/bg.png');
+    url('Images/bg.png');
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
@@ -672,3 +672,4 @@ footer {
     max-width: 75vw;
   }
 }
+

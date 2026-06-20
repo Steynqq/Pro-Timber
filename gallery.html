@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery — Pro Timber</title>
+  <link rel="icon" type="image/png" href="images/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-brand">
+      <img src="images/logo.png" alt="Pro Timber" class="nav-logo">
+    </a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links" id="nav-links">
+      <a href="index.html">Home</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <main>
+
+    <h2>Our Work</h2>
+    <p>A selection of completed projects across retail, office, and residential spaces.</p>
+
+    <div class="gallery-grid">
+
+      <div class="gallery-item">
+        <img src="images/Saint-Bar-Interior-11.jpg" alt="Saint Bar">
+        <div class="gallery-caption"><span>Commercial</span>Saint Bar</div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="images/Brooklyn-Optica-5.jpg" alt="Brooklyn Optica">
+        <div class="gallery-caption"><span>Retail</span>Brooklyn Optica</div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="images/Fishhoek.jpg" alt="Fishhoek Restaurant">
+        <div class="gallery-caption"><span>Commercial</span>Fishhoek Restaurant</div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="images/Safari-And-Outdoor-2.jpg" alt="Safari & Outdoor">
+        <div class="gallery-caption"><span>Retail</span>Safari &amp; Outdoor</div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="images/IMG_3466-1.jpg" alt="Cotton On">
+        <div class="gallery-caption"><span>Retail</span>Cotton On</div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="images/IMG_3801.jpg" alt="Cotton On">
+        <div class="gallery-caption"><span>Retail</span>Cotton On — Storefront</div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="images/PHOTO-2021-10-07-20-07-20_1.jpg" alt="Restaurant fitout">
+        <div class="gallery-caption"><span>Commercial</span>Restaurant Fitout</div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="images/PHOTO-2021-11-23-13-27-31_9.jpg" alt="Restaurant interior">
+        <div class="gallery-caption"><span>Commercial</span>Restaurant Interior</div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="images/PHOTO-2023-04-04-16-33-15-1.jpg" alt="Kauai">
+        <div class="gallery-caption"><span>Retail</span>Kauai</div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="images/198484238_4210674048969662_3651807283225128821_n.jpg" alt="Upscale restaurant">
+        <div class="gallery-caption"><span>Commercial</span>Upscale Restaurant</div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="images/project1.jpg" alt="Tashas">
+        <div class="gallery-caption"><span>Commercial</span>Tashas</div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="images/Hinterland.jpg" alt="Hinterland">
+        <div class="gallery-caption"><span>Commercial</span>Hinterland</div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Pro Timber. Unit C1, Edward Park, 124 Edward Avenue, Hennopspark, Centurion &nbsp;|&nbsp; 083 263 7276</p>
+  </footer>
+
+  <!-- LIGHTBOX OVERLAY
+       This div sits hidden on top of everything. JavaScript makes it visible when
+       a photo is clicked. "display:none" means it takes up no space and is invisible. -->
+  <div id="lightbox">
+    <button id="lb-close">&#x2715;</button>
+    <div id="lb-inner">
+      <button id="lb-prev">&#8592;</button>
+      <img id="lb-img" src="" alt="">
+      <button id="lb-next">&#8594;</button>
+    </div>
+    <div id="lb-caption">
+      <span id="lb-category"></span>
+      <span id="lb-title"></span>
+    </div>
+  </div>
+
+  <script>
+    // ── Build the list of all photos from the gallery ──────────────────
+    // querySelectorAll returns every element matching the CSS selector —
+    // like a list of all .gallery-item divs on the page.
+    const items = document.querySelectorAll('.gallery-item');
+
+    // We'll store each photo's data in a plain array of objects —
+    // similar to a list of dicts in Python.
+    const photos = [];
+
+    items.forEach(function(item) {
+      photos.push({
+        src:      item.querySelector('img').src,
+        title:    item.querySelector('.gallery-caption').lastChild.textContent.trim(),
+        category: item.querySelector('.gallery-caption span').textContent.trim()
+      });
+    });
+
+    // ── Track which photo is currently open ────────────────────────────
+    let current = 0;
+
+    // ── Get references to the lightbox elements ────────────────────────
+    const lightbox   = document.getElementById('lightbox');
+    const lbImg      = document.getElementById('lb-img');
+    const lbTitle    = document.getElementById('lb-title');
+    const lbCategory = document.getElementById('lb-category');
+
+    // ── Open the lightbox at a specific index ──────────────────────────
+    function openLightbox(index) {
+      current = index;
+      lbImg.src          = photos[index].src;
+      lbTitle.textContent    = photos[index].title;
+      lbCategory.textContent = photos[index].category;
+      lightbox.style.display = 'flex';   // make it visible
+      document.body.style.overflow = 'hidden';  // stop page scrolling while open
+    }
+
+    // ── Close the lightbox ─────────────────────────────────────────────
+    function closeLightbox() {
+      lightbox.style.display = 'none';
+      document.body.style.overflow = '';   // restore scrolling
+    }
+
+    // ── Go to the next or previous photo ──────────────────────────────
+    function showNext() {
+      // % is the modulo operator — same as Python.
+      // When current reaches the end of the array it wraps back to 0.
+      current = (current + 1) % photos.length;
+      openLightbox(current);
+    }
+
+    function showPrev() {
+      current = (current - 1 + photos.length) % photos.length;
+      openLightbox(current);
+    }
+
+    // ── Wire up click events ───────────────────────────────────────────
+    // addEventListener listens for a specific event (like 'click') on an element.
+    // When that event fires, it runs the function you provide.
+    items.forEach(function(item, index) {
+      item.addEventListener('click', function() { openLightbox(index); });
+    });
+
+    document.getElementById('lb-close').addEventListener('click', closeLightbox);
+    document.getElementById('lb-next').addEventListener('click', showNext);
+    document.getElementById('lb-prev').addEventListener('click', showPrev);
+
+    // Close if user clicks the dark background (but not the image itself)
+    lightbox.addEventListener('click', function(e) {
+      if (e.target === lightbox) closeLightbox();
+    });
+
+    // Keyboard support: arrow keys to navigate, Escape to close
+    document.addEventListener('keydown', function(e) {
+      if (lightbox.style.display !== 'flex') return;  // only when lightbox is open
+      if (e.key === 'ArrowRight') showNext();
+      if (e.key === 'ArrowLeft')  showPrev();
+      if (e.key === 'Escape')     closeLightbox();
+    });
+  </script>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navLinks  = document.getElementById('nav-links');
+    hamburger.addEventListener('click', function() {
+      hamburger.classList.toggle('open');
+      navLinks.classList.toggle('open');
+    });
+    navLinks.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        hamburger.classList.remove('open');
+        navLinks.classList.remove('open');
+      });
+    });
+  </script>
+</body>
+</html>

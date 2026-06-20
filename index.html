@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pro Timber — Joinery &amp; Shopfitting</title>
+  <link rel="icon" type="image/png" href="images/logo.png">
+  <!-- Google Fonts: loads Playfair Display (headings) and Lato (body/nav) from the internet.
+       This must come BEFORE style.css so our CSS can reference these font names. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- NAVIGATION
+       The same nav block appears on eve  ry page.
+       Later we'll learn how to avoid repeating it (using JS or a build tool).
+       For now, copy-paste is fine — it's how most beginners start. -->
+  <nav>
+    <a href="index.html" class="nav-brand">
+      <img src="images/logo.png" alt="Pro Timber" class="nav-logo">
+    </a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links" id="nav-links">
+      <a href="index.html">Home</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- HERO SECTION
+         A "hero" is web jargon for the big intro block at the top of a page.
+         It's the first thing a visitor sees, so it should communicate who you are
+         and what you do immediately. -->
+    <section class="hero">
+      <h1>Pro Timber</h1>
+      <p>Bespoke joinery &amp; shopfitting for commercial and residential spaces.</p>
+      <a href="gallery.html" class="btn">View Our Work</a>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="section" style="text-align:center">
+      <h2>Who We Are</h2>
+      <p>
+        Pro Timber is a Pretoria-based joinery and shopfitting company with an experienced
+        management team and expert artisans. We work with commercial, residential, and
+        corporate clients to deliver high-quality, custom-crafted timber solutions.
+      </p>
+      <p>
+        Every project is built to last — from bespoke cabinetry and built-in furniture to
+        full shopfitting installations for retail and office environments.
+      </p>
+    </section>
+
+    <!-- SERVICES SECTION
+         Notice the "services-grid" class — that class is defined in style.css
+         and sets up a 3-column grid layout. -->
+    <section class="section" style="text-align:center">
+      <h2>What We Do</h2>
+
+      <div class="services-grid">
+        <!-- "div" stands for "division" — it's a generic container with no meaning of its own.
+             We use it here purely to group content for styling purposes. -->
+        <div class="service-card">
+          <h3>Shopfitting</h3>
+          <p>Custom retail and office interiors built to your exact specifications.</p>
+        </div>
+
+        <div class="service-card">
+          <h3>Joinery</h3>
+          <p>Doors, frames, cabinetry, and built-in furniture crafted by skilled artisans.</p>
+        </div>
+
+        <div class="service-card">
+          <h3>Residential</h3>
+          <p>Kitchens, wardrobes, and feature installations for homes across Pretoria.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY CHOOSE US
+         A row of stats/selling points. The "stats-bar" class sets up a flex row in CSS. -->
+    <section class="stats-bar">
+      <div class="stat">
+        <span class="stat-number">20+</span>
+        <span class="stat-label">Years Experience</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">500+</span>
+        <span class="stat-label">Projects Completed</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">3</span>
+        <span class="stat-label">Sectors Served</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">100%</span>
+        <span class="stat-label">Custom Crafted</span>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS
+         Numbered steps showing the client journey. -->
+    <section class="section" style="text-align:center">
+      <h2>How It Works</h2>
+      <div class="steps">
+
+        <div class="step">
+          <div class="step-number">01</div>
+          <h3>Consultation</h3>
+          <p>We meet to understand your vision, space, and requirements in detail.</p>
+        </div>
+
+        <div class="step-divider"></div>
+
+        <div class="step">
+          <div class="step-number">02</div>
+          <h3>Design</h3>
+          <p>Our team develops a detailed design and material plan tailored to your project.</p>
+        </div>
+
+        <div class="step-divider"></div>
+
+        <div class="step">
+          <div class="step-number">03</div>
+          <h3>Build</h3>
+          <p>Expert artisans craft and install every element to the highest standard.</p>
+        </div>
+
+        <div class="step-divider"></div>
+
+        <div class="step">
+          <div class="step-number">04</div>
+          <h3>Handover</h3>
+          <p>We do a final walkthrough together and ensure everything is perfect.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CALL TO ACTION BANNER -->
+    <section class="cta-banner">
+      <h2>Ready to Start Your Project?</h2>
+      <p>Get in touch and let's bring your vision to life.</p>
+      <a href="contact.html" class="btn">Contact Us</a>
+    </section>
+
+    <!-- LOCATION -->
+    <section class="section" style="text-align:center">
+      <h2>Find Us</h2>
+      <p>Unit C1, Edward Park, 124 Edward Avenue, Hennopspark, Centurion</p>
+      <a href="https://www.google.com/maps/dir/-25.8231577,28.3070074/Pro-Timber+Pty+Ltd,+Unit+C1,+124+Edward+Ave,+Hennopspark,+Centurion,+0157/@-25.8391214,28.1965211,13z/data=!3m1!4b1!4m17!1m7!3m6!1s0x1e956595f6eb8b1b:0x446a75d9edf15327!2sPro-Timber+Pty+Ltd!8m2!3d-25.8639199!4d28.1676412!16s%2Fg%2F11k9jcw3yf!4m8!1m1!4e1!1m5!1m1!1s0x1e956595f6eb8b1b:0x446a75d9edf15327!2m2!1d28.1676412!2d-25.8639199?entry=ttu&g_ep=EgoyMDI2MDYxNi4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="maps-btn">
+        &#9655; Get Directions
+      </a>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Pro Timber. Unit C1, Edward Park, 124 Edward Avenue, Hennopspark, Centurion &nbsp;|&nbsp; 083 263 7276</p>
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navLinks  = document.getElementById('nav-links');
+    hamburger.addEventListener('click', function() {
+      hamburger.classList.toggle('open');
+      navLinks.classList.toggle('open');
+    });
+    // Close menu when a link is clicked
+    navLinks.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        hamburger.classList.remove('open');
+        navLinks.classList.remove('open');
+      });
+    });
+  </script>
+</body>
+</html>
